@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIR JORDAN — Sneaker World Room</title>
+<meta name="description" content="The complete Air Jordan sneaker collection — every iconic model from 1984 to today. Browse the legacy of Michael Jordan's signature shoe line.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#e8002d;--dark-red:#a00020;--gold:#c9a84c;--black:#060606;--light:#f0ede8;--glow:rgba(232,0,45,.45);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--black);color:var(--light);font-family:'Barlow Condensed',sans-serif;overflow-x:hidden;cursor:crosshair;}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(to bottom,transparent 0,transparent 3px,rgba(0,0,0,.055) 3px,rgba(0,0,0,.055) 4px);pointer-events:none;z-index:9999;}
+.room{min-height:100vh;background:radial-gradient(ellipse 90% 50% at 50% 0%,#1c0008 0%,transparent 65%),radial-gradient(ellipse 60% 40% at 15% 100%,#100004 0%,transparent 55%),var(--black);position:relative;overflow:hidden;}
+.corner{position:fixed;width:68px;height:68px;z-index:1000;pointer-events:none;}
+.tl{top:16px;left:16px;border-top:2px solid var(--red);border-left:2px solid var(--red);}
+.tr{top:16px;right:16px;border-top:2px solid var(--red);border-right:2px solid var(--red);}
+.bl{bottom:16px;left:16px;border-bottom:2px solid var(--red);border-left:2px solid var(--red);}
+.br{bottom:16px;right:16px;border-bottom:2px solid var(--red);border-right:2px solid var(--red);}
+
+/* HERO */
+.hero{text-align:center;padding:54px 24px 22px;position:relative;z-index:10;}
+.jumpman{display:inline-block;margin-bottom:16px;animation:float 3s ease-in-out infinite;}
+.jumpman svg{width:84px;height:84px;filter:drop-shadow(0 0 28px var(--red)) drop-shadow(0 0 54px rgba(232,0,45,.28));}
+@keyframes float{0%,100%{transform:translateY(0)rotate(0deg);}50%{transform:translateY(-10px)rotate(3deg);}}
+.eyebrow{font-size:12px;letter-spacing:8px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;opacity:.85;}
+.title{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,10vw,134px);line-height:.88;letter-spacing:4px;background:linear-gradient(165deg,#fff 0%,#ccc 38%,var(--red) 68%,#800018 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 40px rgba(232,0,45,.35));margin-bottom:6px;}
+.sub{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,5vw,56px);letter-spacing:16px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.22);margin-bottom:16px;}
+.tagline{font-size:11px;letter-spacing:6px;color:rgba(255,255,255,.28);text-transform:uppercase;}
+
+/* TICKER */
+.band{background:var(--red);padding:9px 0;overflow:hidden;}
+.band-inner{display:flex;gap:48px;animation:tick 22s linear infinite;white-space:nowrap;}
+.band-item{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:6px;color:rgba(0,0,0,.44);flex-shrink:0;}
+.band-item.b{color:rgba(0,0,0,.68);}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* STATS */
+.stats{border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:26px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;background:linear-gradient(to right,transparent,rgba(232,0,45,.03),transparent);}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr);}}
+.sn{font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--red);display:block;filter:drop-shadow(0 0 18px rgba(232,0,45,.4));line-height:1;}
+.sl{font-size:10px;letter-spacing:4px;color:rgba(255,255,255,.28);text-transform:uppercase;margin-top:4px;}
+
+/* SECTION */
+.sec{padding:38px 36px 16px;display:flex;align-items:center;gap:16px;}
+.sec h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:4px;}
+.badge{font-size:10px;letter-spacing:3px;color:var(--red);border:1px solid var(--red);padding:3px 10px;text-transform:uppercase;box-shadow:0 0 10px rgba(232,0,45,.18);}
+
+/* DIVIDER */
+.div{display:flex;align-items:center;gap:18px;padding:6px 36px;}
+.div span{display:block;height:1px;flex:1;background:linear-gradient(to right,transparent,var(--red));box-shadow:0 0 6px var(--red);}
+.div span:last-child{background:linear-gradient(to left,transparent,var(--red));}
+.dia{width:7px;height:7px;background:var(--red);transform:rotate(45deg);box-shadow:0 0 14px var(--red),0 0 28px var(--red);flex:none;}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px;padding:0 30px 60px;}
+
+/* CARD */
+.card{position:relative;background:linear-gradient(145deg,#161616,#0e0e0e);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:22px 18px 20px;cursor:pointer;transition:transform .4s cubic-bezier(.23,1,.32,1),box-shadow .4s,border-color .3s;overflow:hidden;display:flex;flex-direction:column;align-items:center;}
+.card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,rgba(232,0,45,.09),transparent 68%);opacity:0;transition:opacity .3s;border-radius:10px;}
+.card:hover::before{opacity:1;}
+.card:hover{transform:translateY(-18px) scale(1.03);border-color:rgba(232,0,45,.45);box-shadow:0 30px 60px rgba(0,0,0,.65),0 0 28px rgba(232,0,45,.18),inset 0 1px 0 rgba(255,255,255,.07);}
+.cno{position:absolute;top:10px;left:14px;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.13);}
+.cyr{position:absolute;top:10px;right:14px;font-size:10px;letter-spacing:1px;color:var(--gold);opacity:.7;}
+.shoe-wrap{width:100%;height:180px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:transform .4s;position:relative;overflow:hidden;border-radius:8px;}
+.shoe-img{width:100%;height:100%;object-fit:contain;transition:transform .5s cubic-bezier(.23,1,.32,1);filter:drop-shadow(0 12px 28px rgba(0,0,0,.7));mix-blend-mode:normal;}
+.card:hover .shoe-img{transform:rotate(-4deg) scale(1.12);}
+.card:hover .shoe-wrap{transform:translateY(-4px);}
+.cm{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;text-align:center;margin-bottom:3px;line-height:1.1;}
+.cc{font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.32);text-align:center;margin-bottom:10px;text-transform:uppercase;}
+.card-footer{display:flex;align-items:center;justify-content:space-between;width:100%;}
+.cp{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--red);}
+.ltd{font-size:8px;letter-spacing:2px;color:var(--gold);border:1px solid rgba(201,168,76,.4);padding:2px 8px;text-transform:uppercase;border-radius:3px;}
+
+/* SIGNATURE */
+.sigw{text-align:center;padding:24px 40px 64px;}
+.sigl{font-size:10px;letter-spacing:6px;color:rgba(255,255,255,.17);text-transform:uppercase;margin-bottom:14px;}
+.sig{font-family:'Bebas Neue',sans-serif;font-size:clamp(58px,12vw,160px);color:transparent;-webkit-text-stroke:1px rgba(232,0,45,.22);line-height:.85;user-select:none;animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{-webkit-text-stroke-color:rgba(232,0,45,.2);}50%{-webkit-text-stroke-color:rgba(232,0,45,.55);}}
+
+/* FADE-IN ANIMATION */
+.card{opacity:0;transform:translateY(40px);}
+.card.visible{opacity:1;transform:translateY(0);transition:opacity .6s ease,transform .6s ease;}
+</style>
+</head>
+<body>
+<div class="corner tl"></div><div class="corner tr"></div>
+<div class="corner bl"></div><div class="corner br"></div>
+<div class="room">
+
+<div class="hero">
+  <div class="jumpman">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="10" r="8" fill="#e8002d"/>
+      <path d="M50 18 L44 40 L28 32 L18 44 L38 50 L34 70 L50 80 L66 70 L62 50 L82 44 L72 32 L56 40 Z" fill="#e8002d"/>
+      <line x1="28" y1="32" x2="6" y2="18" stroke="#e8002d" stroke-width="5" stroke-linecap="round"/>
+      <line x1="72" y1="32" x2="94" y2="18" stroke="#e8002d" stroke-width="5" stroke-linecap="round"/>
+      <path d="M44 68 L34 86 L24 80" stroke="#e8002d" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M56 68 L66 86 L76 80" stroke="#e8002d" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <circle cx="94" cy="16" r="7" fill="none" stroke="#e8002d" stroke-width="1.8"/>
+      <path d="M87 16 Q94 10 101 16 M87 16 Q94 22 101 16 M94 9 Q100 16 94 23" stroke="#e8002d" stroke-width="1.3" fill="none"/>
+    </svg>
+  </div>
+  <div class="eyebrow">Nike · Est. 1984 · Original Collection</div>
+  <div class="title">AIR JORDAN</div>
+  <div class="sub">Sneaker World</div>
+  <div class="tagline">The Complete Legacy · Every Model · Every Era</div>
+</div>
+
+<div class="band">
+  <div class="band-inner">
+    <span class="band-item">JUST DO IT</span><span class="band-item b">✦</span>
+    <span class="band-item">AIR JORDAN</span><span class="band-item b">✦</span>
+    <span class="band-item">MICHAEL JORDAN</span><span class="band-item b">✦</span>
+    <span class="band-item">CHICAGO BULLS</span><span class="band-item b">✦</span>
+    <span class="band-item">LEGACY SINCE 1984</span><span class="band-item b">✦</span>
+    <span class="band-item">JUMPMAN</span><span class="band-item b">✦</span>
+    <span class="band-item">JUST DO IT</span><span class="band-item b">✦</span>
+    <span class="band-item">AIR JORDAN</span><span class="band-item b">✦</span>
+    <span class="band-item">MICHAEL JORDAN</span><span class="band-item b">✦</span>
+    <span class="band-item">CHICAGO BULLS</span><span class="band-item b">✦</span>
+    <span class="band-item">LEGACY SINCE 1984</span><span class="band-item b">✦</span>
+    <span class="band-item">JUMPMAN</span><span class="band-item b">✦</span>
+  </div>
+</div>
+
+<div class="stats">
+  <div style="text-align:center"><span class="sn">38</span><div class="sl">Signature Models</div></div>
+  <div style="text-align:center"><span class="sn">6</span><div class="sl">Championships</div></div>
+  <div style="text-align:center"><span class="sn">40</span><div class="sl">Years Legacy</div></div>
+  <div style="text-align:center"><span class="sn">∞</span><div class="sl">Cultural Impact</div></div>
+</div>
+
+<div class="div"><span></span><div class="dia"></div><span></span></div>
+<div class="sec"><h2>The Collection</h2><div class="badge">All Originals</div></div>
+<div class="grid" id="grid"></div>
+
+<div class="sigw">
+  <div class="sigl">The Greatest of All Time</div>
+  <div class="sig">JORDAN</div>
+</div>
+</div>
+
+<script>
+// ─── SNEAKER IMAGE MAP ─────────────────────────────────────────────────────
+// Maps each sneaker key to its real product image
+const IMAGES = {
+  aj1:    'images/aj1.png',
+  aj3:    'images/aj3.png',
+  aj4:    'images/aj4.png',
+  aj5:    'images/aj5.png',
+  aj6:    'images/aj6.png',
+  aj11:   'images/aj11.png',
+  aj12:   'images/aj4.png',   // Shares similar aesthetic — black/red
+  aj13:   'images/aj11.png',  // Similar low-profile silhouette
+  aj14:   'images/aj6.png',   // Similar dark aesthetic
+  aj1low: 'images/aj1.png',   // Same AJ1 family
+};
+
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const DATA = [
+  {id:'01', model:'Air Jordan 1 Retro High OG',      colorway:'Chicago',        year:'1985', price:'$180', key:'aj1',    ltd:true},
+  {id:'02', model:'Air Jordan 3 Retro',               colorway:'Fire Red',       year:'1988', price:'$200', key:'aj3',    ltd:true},
+  {id:'03', model:'Air Jordan 4 Retro',               colorway:'Bred',           year:'1989', price:'$215', key:'aj4',    ltd:true},
+  {id:'04', model:'Air Jordan 5 Retro',               colorway:'Grape',          year:'1990', price:'$200', key:'aj5',    ltd:false},
+  {id:'05', model:'Air Jordan 6 Retro',               colorway:'Infrared',       year:'1991', price:'$200', key:'aj6',    ltd:false},
+  {id:'06', model:'Air Jordan 11 Retro',              colorway:'Concord',        year:'1995', price:'$225', key:'aj11',   ltd:true},
+  {id:'07', model:'Air Jordan 12 Retro',              colorway:'Flu Game',       year:'1997', price:'$200', key:'aj12',   ltd:true},
+  {id:'08', model:'Air Jordan 13 Retro',              colorway:'He Got Game',    year:'1998', price:'$210', key:'aj13',   ltd:true},
+  {id:'09', model:'Air Jordan 14 Retro',              colorway:'Last Shot',      year:'1999', price:'$195', key:'aj14',   ltd:true},
+  {id:'10', model:'Air Jordan 1 Low OG',              colorway:'Royal Blue',     year:'1985', price:'$140', key:'aj1low', ltd:false},
+  {id:'11', model:'Air Jordan 1 Retro High OG',      colorway:'Bred Toe',       year:'2018', price:'$170', key:'aj1',    ltd:true},
+  {id:'12', model:'Air Jordan 4 Retro',               colorway:'Military Blue',  year:'2024', price:'$215', key:'aj4',    ltd:true},
+  {id:'13', model:'Air Jordan 11 Retro',              colorway:'Space Jam',      year:'2016', price:'$220', key:'aj11',   ltd:true},
+  {id:'14', model:'Air Jordan 6 Retro',               colorway:'Carmine',        year:'2021', price:'$200', key:'aj6',    ltd:false},
+  {id:'15', model:'Air Jordan 5 Retro',               colorway:'Fire Red',       year:'2020', price:'$200', key:'aj5',    ltd:true},
+  {id:'16', model:'Air Jordan 3 Retro',               colorway:'True Blue',      year:'2016', price:'$200', key:'aj3',    ltd:false},
+  {id:'17', model:'Air Jordan 13 Retro',              colorway:'Flint',          year:'2020', price:'$190', key:'aj13',   ltd:false},
+  {id:'18', model:'Air Jordan 12 Retro',              colorway:'Taxi',           year:'2021', price:'$200', key:'aj12',   ltd:false},
+  {id:'19', model:'Air Jordan 1 Retro High OG',      colorway:'Royal',          year:'2017', price:'$170', key:'aj1',    ltd:true},
+  {id:'20', model:'Air Jordan 14 Retro',              colorway:'Hyper Royal',    year:'2021', price:'$200', key:'aj14',   ltd:false},
+];
+
+const grid = document.getElementById('grid');
+DATA.forEach((s, i) => {
+  const imgSrc = IMAGES[s.key] || IMAGES.aj1;
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.style.transitionDelay = `${i * 60}ms`;
+  card.innerHTML = `
+    <div class="cno">${s.id}</div>
+    <div class="cyr">${s.year}</div>
+    <div class="shoe-wrap">
+      <img class="shoe-img" src="${imgSrc}" alt="${s.model} ${s.colorway}" loading="lazy">
+    </div>
+    <div class="cm">${s.model}</div>
+    <div class="cc">${s.colorway}</div>
+    <div class="card-footer">
+      <div class="cp">${s.price}</div>
+      ${s.ltd ? '<div class="ltd">Limited</div>' : ''}
+    </div>`;
+  grid.appendChild(card);
+});
+
+// Scroll-triggered fade-in animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+// 3D tilt effect on cards
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5;
+    const y = (e.clientY - r.top) / r.height - .5;
+    card.style.transform = `translateY(-18px) scale(1.03) rotateY(${x * 14}deg) rotateX(${-y * 8}deg)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+</script>
+</body>
+</html>
