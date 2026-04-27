@@ -126,6 +126,12 @@ https://your-app-name.streamlit.app
 
 ---
 
+## 👨‍💻 Author
+
+**Sumanta Swain**
+
+---
+
 ## 📄 License
 
 This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
